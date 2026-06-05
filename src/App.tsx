@@ -260,8 +260,9 @@ function App() {
                 className="h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
               />
-              <span className="text-white font-bold text-lg tracking-wide whitespace-nowrap">
-                Gentle Hands Barber
+              <span className="text-white font-bold text-base md:text-lg tracking-wide whitespace-nowrap leading-tight">
+                Gentle Hands<br className="hidden xs:block sm:hidden"/>
+                <span className="sm:inline"> Barber</span>
               </span>
             </div>
             <div className="hidden lg:flex gap-10 items-center font-semibold text-sm tracking-wider uppercase text-zinc-200">
@@ -355,7 +356,7 @@ function App() {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-900/60 to-zinc-950/80" />
             <div className="absolute inset-0 bg-black/30 mix-blend-multiply" />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#FCFBF7] dark:from-zinc-950 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
           </div>
           
           <div className="relative z-10 text-center max-w-5xl mx-auto px-4 mt-20">
@@ -433,7 +434,7 @@ function App() {
           </div>
         </section>
 
-        <section id="services" className="py-32 bg-[#FFFEFC] dark:bg-zinc-900 relative">
+        <section id="services" className="py-24 bg-zinc-900 relative">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03] dark:opacity-[0.02]" />
           
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -447,7 +448,7 @@ function App() {
               <div className="w-24 h-1 bg-amber-500 mx-auto rounded-full opacity-80" />
             </motion.div>
             
-            <div className="bg-[#FCFBF7] dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-3xl p-8 md:p-14 lg:p-20 shadow-2xl overflow-hidden relative">
+            <div className="bg-zinc-950 border border-zinc-800 rounded-3xl p-6 md:p-10 lg:p-16 shadow-2xl overflow-hidden relative">
               <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
               <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
               
@@ -461,10 +462,10 @@ function App() {
                     key={idx} 
                     className="flex justify-between items-baseline group py-3 border-b border-zinc-200 dark:border-zinc-800/50 hover:border-amber-500/30 transition-colors"
                   >
-                    <span className={`text-xl text-zinc-800 dark:text-zinc-200 font-medium group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors whitespace-nowrap ${isRTL ? 'font-arabic' : 'font-serif tracking-wide'}`}>
+                    <span className={`text-base md:text-xl text-zinc-200 font-medium group-hover:text-amber-400 transition-colors ${isRTL ? 'font-arabic' : 'font-serif tracking-wide'}`}>
                       {i18n.language === 'ar' ? svc.ar : svc.en}
                     </span>
-                    <div className="flex-1 mx-6 border-b border-zinc-300 dark:border-zinc-700/30 border-dotted relative top-[-8px]"></div>
+                    <div className="flex-1 mx-4 border-b border-zinc-700/40 border-dotted relative top-[-8px] min-w-0"></div>
                     <span className="text-amber-600 dark:text-amber-500 font-bold tracking-widest text-lg">
                       {svc.price}
                     </span>
@@ -479,7 +480,7 @@ function App() {
 
         <ReviewsSection />
 
-        <section id="faq" className="py-24 bg-[#FFFEFC] dark:bg-zinc-900">
+        <section id="faq" className="py-24 bg-zinc-900">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
@@ -487,7 +488,7 @@ function App() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">{t('FAQ')}</h2>
+              <h2 className="text-3xl font-bold text-white mb-4">{t('FAQ')}</h2>
               <div className="w-24 h-1 bg-amber-500 mx-auto rounded-full" />
             </motion.div>
             <div className="space-y-4">
@@ -502,15 +503,15 @@ function App() {
           </div>
         </section>
 
-        <footer className="bg-[#FCFBF7] dark:bg-zinc-950 pt-16 pb-8 border-t border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">
+        <footer className="bg-zinc-950 pt-16 pb-8 border-t border-zinc-800 text-zinc-300">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
               <div>
-                <h3 className="text-zinc-900 dark:text-white font-bold text-xl mb-4">💈 Gentle Hands Barber 💈</h3>
+                <h3 className="text-white font-bold text-xl mb-4">Gentle Hands Barber</h3>
                 <p className="leading-relaxed">{t('Tagline')}</p>
               </div>
               <div>
-                <h4 className="text-zinc-900 dark:text-white font-bold mb-4 text-lg">{t('Contact')}</h4>
+                <h4 className="text-white font-bold mb-4 text-lg">{t('Contact')}</h4>
                 <div className="space-y-4">
                   <p className="flex items-start">
                     <MapPin className={`w-5 h-5 shrink-0 ${isRTL ? 'ml-3' : 'mr-3'} text-amber-500 mt-1`} /> 
@@ -522,26 +523,26 @@ function App() {
                 </div>
               </div>
               <div>
-                <h4 className="text-zinc-900 dark:text-white font-bold mb-4 text-lg">{t('Hours')}</h4>
+                <h4 className="text-white font-bold mb-4 text-lg">{t('Hours')}</h4>
                 <div className="space-y-3">
                   <div className="flex items-center mb-4">
                     <Clock className={`w-5 h-5 text-amber-500 ${isRTL ? 'ml-3' : 'mr-3'}`} /> 
                     <span className={`font-semibold text-zinc-900 dark:text-white ${isRTL ? 'mr-1' : 'ml-1'}`}>{t('Opening_Hours', 'Opening Hours')}</span>
                   </div>
                   <div className={`grid grid-cols-[max-content_1fr] gap-x-6 gap-y-2.5 ${isRTL ? 'pr-8' : 'pl-8'}`}>
-                    <span>{t('Thursday', 'Thursday')}</span><span dir="ltr" className="text-zinc-900 dark:text-white font-medium">9 AM - 12 AM</span>
-                    <span>{t('Friday', 'Friday')}</span><span dir="ltr" className="text-zinc-900 dark:text-white font-medium">12 PM - 12 AM</span>
-                    <span>{t('Saturday', 'Saturday')}</span><span dir="ltr" className="text-zinc-900 dark:text-white font-medium">9 AM - 12 AM</span>
-                    <span>{t('Sunday', 'Sunday')}</span><span dir="ltr" className="text-zinc-900 dark:text-white font-medium">9 AM - 12 AM</span>
-                    <span>{t('Monday', 'Monday')}</span><span dir="ltr" className="text-zinc-900 dark:text-white font-medium">9 AM - 12 AM</span>
-                    <span>{t('Tuesday', 'Tuesday')}</span><span dir="ltr" className="text-zinc-900 dark:text-white font-medium">9 AM - 12 AM</span>
-                    <span>{t('Wednesday', 'Wednesday')}</span><span dir="ltr" className="text-zinc-900 dark:text-white font-medium">9 AM - 12 AM</span>
+                    <span>{t('Thursday', 'Thursday')}</span><span dir="ltr" className="text-zinc-200 font-medium">9 AM - 12 AM</span>
+                    <span>{t('Friday', 'Friday')}</span><span dir="ltr" className="text-zinc-200 font-medium">12 PM - 12 AM</span>
+                    <span>{t('Saturday', 'Saturday')}</span><span dir="ltr" className="text-zinc-200 font-medium">9 AM - 12 AM</span>
+                    <span>{t('Sunday', 'Sunday')}</span><span dir="ltr" className="text-zinc-200 font-medium">9 AM - 12 AM</span>
+                    <span>{t('Monday', 'Monday')}</span><span dir="ltr" className="text-zinc-200 font-medium">9 AM - 12 AM</span>
+                    <span>{t('Tuesday', 'Tuesday')}</span><span dir="ltr" className="text-zinc-200 font-medium">9 AM - 12 AM</span>
+                    <span>{t('Wednesday', 'Wednesday')}</span><span dir="ltr" className="text-zinc-200 font-medium">9 AM - 12 AM</span>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="border-t border-zinc-200 dark:border-zinc-800 pt-8 text-center text-sm text-zinc-500">
-              <p>&copy; {new Date().getFullYear()} 💈 Gentle Hands Barber 💈 حلاق الأيدي الرقيقة. All rights reserved.</p>
+            <div className="border-t border-zinc-800 pt-8 text-center text-sm text-zinc-500">
+              <p>&copy; {new Date().getFullYear()} Gentle Hands Barber | حلاق الأيدي الرقيقة. All rights reserved.</p>
             </div>
           </div>
         </footer>
@@ -560,20 +561,20 @@ function App() {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-[90px] right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-80 md:w-96 max-w-[400px] bg-[#FFFEFC] dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow-2xl z-[60] overflow-hidden flex flex-col"
+            className="fixed bottom-[90px] right-4 sm:right-6 w-[calc(100vw-2rem)] sm:w-80 md:w-96 max-w-[400px] bg-zinc-900 border border-zinc-800 rounded-2xl shadow-2xl z-[60] overflow-hidden flex flex-col"
             style={{ maxHeight: '600px', height: '70vh' }}
           >
-            <div className="bg-[#FCFBF7] dark:bg-zinc-950 p-4 border-b border-zinc-200 dark:border-zinc-800 flex justify-between items-center">
+            <div className="bg-zinc-950 p-4 border-b border-zinc-800 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
                    <Scissors className="w-5 h-5 text-zinc-900 dark:text-white" />
                 </div>
                 <div>
-                  <h3 className="text-zinc-900 dark:text-white font-bold text-sm">Assistant</h3>
+                  <h3 className="text-white font-bold text-sm">Assistant</h3>
                   <p className="text-xs text-amber-500 flex items-center"><span className="w-2 h-2 bg-green-500 rounded-full mr-2 ml-1" /> Online</p>
                 </div>
               </div>
-              <button onClick={() => setIsChatOpen(false)} className="text-zinc-500 hover:text-zinc-900 dark:text-white">
+              <button onClick={() => setIsChatOpen(false)} className="text-zinc-400 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
