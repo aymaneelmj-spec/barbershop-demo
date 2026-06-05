@@ -346,8 +346,8 @@ function App() {
         </AnimatePresence>
       </nav>
 
-      <main className="pt-14 md:pt-16">
-        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
+      <main>
+        <section id="hero" className="relative min-h-screen flex items-start justify-center overflow-hidden bg-zinc-950">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop" 
@@ -359,7 +359,7 @@ function App() {
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
           </div>
           
-          <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
+          <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-20 md:pt-24 pb-10">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
