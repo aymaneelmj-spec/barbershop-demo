@@ -22,7 +22,7 @@ const fullMenu = [
 ];
 
 function GallerySection() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -121,7 +121,7 @@ function GallerySection() {
         </div>
         
         <p className="text-center text-zinc-600 text-xs mt-3 md:hidden tracking-widest">
-          ← {i18n.language === 'ar' ? 'اسحب للتصفح' : 'swipe to browse'} →
+          ← swipe to browse →
         </p>
       </div>
 
