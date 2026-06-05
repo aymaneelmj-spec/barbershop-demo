@@ -213,34 +213,37 @@ function App() {
             className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#FCFBF7] dark:bg-zinc-950 ${isRTL ? 'dir-rtl' : 'dir-ltr'}`} 
             dir={isRTL ? 'rtl' : 'ltr'}
           >
-            <div className="flex-shrink-0 flex flex-col items-center gap-6 group">
-               <motion.div
-  initial={{ opacity: 0, scale: 0.85 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ delay: 0.15, duration: 0.7 }}
->
-  <img
-    src="/gallery/barbershoplogo.png"
-    alt="Gentle Hands Barber"
-    className="h-24 md:h-32 w-auto object-contain drop-shadow-2xl"
-  />
-</motion.div>
+            {/* Full-screen scissors — absolutely positioned, behind the logo */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+            <span className="scissors-float scissors-float-1">✂</span>
+            <span className="scissors-float scissors-float-2">✂</span>
+            <span className="scissors-float scissors-float-3">✂</span>
+            <span className="scissors-float scissors-float-4">✂</span>
+            <span className="scissors-float scissors-float-5">✂</span>
+          </div>
 
-{/* Two scissors falling at different offsets */}
-<div className="relative h-16 flex items-center justify-center gap-12 overflow-hidden" style={{width:'160px'}}>
-  <span className="text-amber-500 text-4xl scissors-fall select-none" aria-hidden="true">✂</span>
-  <span className="text-amber-400 text-3xl scissors-fall-delay select-none" aria-hidden="true">✂</span>
-</div>
-
-<motion.p
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 0.6 }}
-  className="text-amber-500 text-xs tracking-[0.3em] uppercase font-semibold"
->
-  Premium Grooming
-</motion.p>
-            </div>
+          {/* Centered logo + text */}
+          <div className="relative z-10 flex flex-col items-center gap-6">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.85 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.7 }}
+            >
+              <img
+                src="/gallery/barbershoplogo.png"
+                alt="Gentle Hands Barber"
+                className="h-28 md:h-36 w-auto object-contain drop-shadow-2xl"
+              />
+            </motion.div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7 }}
+              className="text-amber-500 text-xs tracking-[0.35em] uppercase font-semibold"
+            >
+              Premium Grooming
+            </motion.p>
+          </div>
           </motion.div>
         )}
       </AnimatePresence>
