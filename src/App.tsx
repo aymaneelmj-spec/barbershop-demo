@@ -359,12 +359,12 @@ function App() {
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
           </div>
           
-          <div className="relative z-10 text-center max-w-5xl mx-auto px-4 mt-16 md:mt-20">
+          <div className="relative z-10 text-center max-w-5xl mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8 }}
-              className="inline-block mb-6"
+              className="inline-block mb-3 md:mb-6"
             >
               <div className="flex items-center justify-center gap-2 mb-3">
                 <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
