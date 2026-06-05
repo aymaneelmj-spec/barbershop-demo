@@ -240,7 +240,8 @@ function App() {
 >
   Premium Grooming
 </motion.p>
-
+            </div>
+          </motion.div>
         )}
       </AnimatePresence>
 
