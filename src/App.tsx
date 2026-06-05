@@ -254,10 +254,19 @@ function App() {
               </span>
             </div>
             <div className="hidden lg:flex gap-10 items-center font-semibold text-sm tracking-wider uppercase text-zinc-200">
-              <a href="#services" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('Services')}</a>
-              <a href="#gallery" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('Photos')}</a>
-              <a href="#reviews" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('Reviews')}</a>
-              <a href="#faq" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('FAQ')}</a>
+              {[
+                { id:'services', label:t('Services') },
+                { id:'gallery',  label:t('Photos') },
+                { id:'reviews',  label:t('Reviews') },
+                { id:'faq',      label:t('FAQ') },
+              ].map((item,i) => (
+                <button key={i} onClick={() => {
+                  const el = document.getElementById(item.id);
+                  if(el){ const top = el.getBoundingClientRect().top + window.scrollY - 56; window.scrollTo({top, behavior:'smooth'}); }
+                }} className="text-zinc-300 hover:text-amber-400 transition-colors bg-transparent border-0 cursor-pointer">
+                  {item.label}
+                </button>
+              ))}
               <div className="flex items-center gap-3 border-l border-zinc-700 pl-6">
                 <button
                   onClick={() => setIsDarkMode(!isDarkMode)}
@@ -325,20 +334,29 @@ function App() {
             >
               <div className="flex flex-col font-semibold text-sm tracking-wider uppercase">
                 {[
-                  { href: '#services', label: t('Services') },
-                  { href: '#gallery', label: t('Photos') },
-                  { href: '#reviews', label: t('Reviews') },
-                  { href: '#faq', label: t('FAQ') },
+                  { id: 'services', label: t('Services') },
+                  { id: 'gallery',  label: t('Photos') },
+                  { id: 'reviews',  label: t('Reviews') },
+                  { id: 'faq',      label: t('FAQ') },
                 ].map((item, i) => (
-                  <a
+                  <button
                     key={i}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    href={item.href}
-                    className="flex items-center justify-between px-5 py-3.5 text-zinc-300 hover:text-amber-400 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/60 last:border-b-0"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      setTimeout(() => {
+                        const el = document.getElementById(item.id);
+                        if (el) {
+                          const offset = 56; // navbar height
+                          const top = el.getBoundingClientRect().top + window.scrollY - offset;
+                          window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                      }, 150);
+                    }}
+                    className="w-full flex items-center justify-between px-5 py-3.5 text-zinc-300 hover:text-amber-400 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/60 last:border-b-0"
                   >
                     <span>{item.label}</span>
                     <span className="text-amber-500 text-xs">›</span>
-                  </a>
+                  </button>
                 ))}
               </div>
             </motion.div>
@@ -347,8 +365,8 @@ function App() {
       </nav>
 
       <main>
-        <section id="hero" className="relative min-h-screen flex items-start justify-center overflow-hidden bg-zinc-950">
-          <div className="absolute inset-0 z-0">
+        <section id="hero" className="relative w-full flex items-start justify-center overflow-hidden bg-zinc-950">
+          <div className="absolute inset-0 z-0 min-h-full">
             <img 
               src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop" 
               alt="Luxury Barbershop Interior" 
@@ -359,7 +377,7 @@ function App() {
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
           </div>
           
-          <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-20 md:pt-24 pb-10">
+          <div className="relative z-10 text-center max-w-5xl mx-auto px-4 pt-20 md:pt-24 pb-12 md:pb-16">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
