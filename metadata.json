@@ -1,0 +1,6 @@
+{
+  "name": "حلاق الأيدي الرقيقة BarberShop",
+  "description": "Professional AI-powered barbershop website with language detection, FAQ, reviews, photos, and a Gemini-powered booking chatbot.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
