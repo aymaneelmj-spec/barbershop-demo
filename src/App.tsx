@@ -230,7 +230,7 @@ function App() {
               transition={{ delay: 0.2, duration: 0.7 }}
             >
               <img
-                src="/gallery/barbershoplogo.png"
+                src="/gallery/barbershoplogo.webp"
                 alt="Gentle Hands Barber"
                 className="h-28 md:h-36 w-auto object-contain drop-shadow-2xl"
               />
