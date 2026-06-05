@@ -253,16 +253,15 @@ function App() {
       <nav className="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/60 shadow-sm transition-all duration-300">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 md:h-24">
-            <div className="flex items-center gap-3 group cursor-pointer flex-shrink-0">
+            <div className="flex items-center gap-2 group cursor-pointer flex-shrink-0">
               <img
                 src="/gallery/barbershoplogo.png"
                 alt="Gentle Hands Barber"
-                className="h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow"
+                className="h-9 w-9 md:h-11 md:w-auto object-contain rounded-full transition-transform group-hover:scale-105 drop-shadow"
                 onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
               />
-              <span className="text-white font-bold text-base md:text-lg tracking-wide whitespace-nowrap leading-tight">
-                Gentle Hands<br className="hidden xs:block sm:hidden"/>
-                <span className="sm:inline"> Barber</span>
+              <span className="text-white font-bold text-sm md:text-base tracking-wide whitespace-nowrap hidden sm:block">
+                Gentle Hands Barber
               </span>
             </div>
             <div className="hidden lg:flex gap-10 items-center font-semibold text-sm tracking-wider uppercase text-zinc-200">
@@ -347,7 +346,7 @@ function App() {
       </nav>
 
       <main className="pt-20">
-        <section id="hero" className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-zinc-950">
+        <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
           <div className="absolute inset-0 z-0">
             <img 
               src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=2074&auto=format&fit=crop" 
@@ -359,7 +358,7 @@ function App() {
             <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-zinc-950 to-transparent" />
           </div>
           
-          <div className="relative z-10 text-center max-w-5xl mx-auto px-4 mt-20">
+          <div className="relative z-10 text-center max-w-5xl mx-auto px-4 mt-16 md:mt-20">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -380,7 +379,7 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               style={{ wordSpacing: isRTL ? '0.1em' : 'normal', lineHeight: isRTL ? '1.4' : '1.1' }}
-              className={`text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white mb-6 transition-all drop-shadow-2xl ${isRTL ? 'font-arabic' : 'font-serif tracking-tight'} duration-700`}
+              className={`text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white mb-4 md:mb-6 transition-all drop-shadow-2xl ${isRTL ? 'font-arabic' : 'font-serif tracking-tight'} duration-700`}
             >
               {t('Welcome')}
             </motion.h1>
@@ -389,7 +388,7 @@ function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="text-lg md:text-xl text-zinc-300 font-light mb-12 max-w-2xl mx-auto leading-relaxed"
+              className="text-base md:text-xl text-zinc-300 font-light mb-6 md:mb-10 max-w-2xl mx-auto leading-relaxed"
             >
               {t('Tagline')}
             </motion.p>
@@ -398,11 +397,11 @@ function App() {
                initial={{ opacity: 0, y: 20 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ delay: 0.4 }}
-               className="flex flex-col gap-3 md:flex-row md:gap-5 justify-center items-center w-full max-w-lg md:max-w-4xl mx-auto px-6"
+               className="flex flex-col gap-3 md:flex-row md:gap-4 justify-center items-center w-full max-w-xs sm:max-w-sm md:max-w-4xl mx-auto px-4"
             >
               <button
                 onClick={() => setIsChatOpen(true)}
-                className="bg-amber-600 hover:bg-amber-500 text-white font-bold py-4 px-8 rounded-full shadow-xl shadow-amber-500/20 transition-all flex items-center justify-center gap-3 w-full md:w-auto hover:-translate-y-1"
+                className="bg-amber-600 hover:bg-amber-500 text-white font-bold py-3.5 px-8 rounded-full shadow-xl shadow-amber-500/20 transition-all flex items-center justify-center gap-3 w-full md:w-auto hover:-translate-y-1 text-sm md:text-base"
               >
                 <div className="relative flex items-center justify-center">
                   <MessageSquare className="w-5 h-5 flex-shrink-0" />
@@ -415,7 +414,7 @@ function App() {
                 href={`https://wa.me/966548127020?text=${encodeURIComponent(isRTL ? "السلام عليكم، أريد الحجز" : "Hello, I would like to book an appointment")}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative text-white font-bold py-4 px-8 rounded-full transition-all flex items-center justify-center gap-3 w-full md:w-auto hover:-translate-y-1 whatsapp-glow-btn"
+                className="relative text-white font-bold py-3.5 px-8 rounded-full transition-all flex items-center justify-center gap-3 w-full md:w-auto hover:-translate-y-1 whatsapp-glow-btn text-sm md:text-base"
               >
                 <svg className="w-5 h-5 flex-shrink-0 relative z-10" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 <span className="whitespace-nowrap relative z-10">{t('Book via WhatsApp')}</span>
@@ -425,7 +424,7 @@ function App() {
                 href="https://www.google.com/maps/place/%D8%AD%D9%84%D8%A7%D9%82+%D8%A7%D9%84%D8%A3%D9%8A%D8%AF%D9%8A+%D8%A7%D9%84%D8%B1%D9%82%D9%8A%D9%82%D8%A9+Barbershop%E2%80%AD/@24.6732776,46.7181856,16.5z/data=!4m11!1m3!2m2!1sbarbershops+near+Saudi+Arabia!6e1!3m6!1s0x3e2f05a71b256ef7:0xdbd8555bb0fb09ba!8m2!3d24.6707546!4d46.731436!15sCh1iYXJiZXJzaG9wcyBuZWFyIFNhdWRpIEFyYWJpYVofIh1iYXJiZXJzaG9wcyBuZWFyIHNhdWRpIGFyYWJpYZIBC2JhcmJlcl9zaG9wmgFEQ2k5RFFVbFJRVU52WkVOb2RIbGpSamx2VDI1a00xUllaRk5PVkU0eVlXMDBkMlZVVmpWWFIxRjVZV3hPU2xKdFl4QULgAQD6AQQIUBBK!16s%2Fg%2F11h1mk4sz1?entry=ttu&g_ep=EgoyMDI2MDYwMi4wIKXMDSoASAFQAw%3D%3D"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-zinc-800/80 backdrop-blur-md hover:bg-zinc-700 text-white border border-zinc-600 font-bold py-4 px-8 rounded-full shadow-xl transition-all flex items-center justify-center gap-3 w-full md:w-auto hover:-translate-y-1"
+                className="bg-zinc-800/80 backdrop-blur-md hover:bg-zinc-700 text-white border border-zinc-600 font-bold py-3.5 px-8 rounded-full shadow-xl transition-all flex items-center justify-center gap-3 w-full md:w-auto hover:-translate-y-1 text-sm md:text-base"
               >
                 <MapPin className="w-5 h-5 flex-shrink-0 text-amber-500" />
                 <span className="whitespace-nowrap">{t('Get Directions')}</span>
