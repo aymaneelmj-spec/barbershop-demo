@@ -249,34 +249,33 @@ function App() {
         )}
       </AnimatePresence>
 
-      <div className={`min-h-screen font-sans bg-[#FCFBF7] dark:bg-zinc-950 text-zinc-900 dark:text-white ${isRTL ? 'dir-rtl' : 'dir-ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
-      <nav className="fixed top-0 w-full z-50 bg-[#FCFBF7]/90 dark:bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-200/50 dark:border-zinc-800/50 shadow-sm transition-all duration-300">
+      <div className={`min-h-screen font-sans bg-zinc-950 text-white ${isRTL ? 'dir-rtl' : 'dir-ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
+      <nav className="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/60 shadow-sm transition-all duration-300">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20 md:h-24">
-            <div className="flex items-center gap-2 md:gap-4 group cursor-pointer">
-             <img
-  src="/gallery/barbershoplogo.png"
-  alt="Gentle Hands Barber"
-  className="h-12 md:h-14 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow"
-/>
-              <span className="text-xs font-medium text-zinc-500 dark:text-zinc-400 tracking-wider hidden lg:block">| &nbsp; حلاق الأيدي الرقيقة</span>
+            <div className="flex items-center gap-3 group cursor-pointer flex-shrink-0">
+              <img
+                src="/gallery/barbershoplogo.png"
+                alt="Gentle Hands Barber"
+                className="h-11 md:h-12 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow"
+              />
             </div>
-            <div className="hidden lg:flex gap-10 items-center font-semibold text-sm tracking-wider uppercase">
-              <a href="#services" className="text-zinc-800 dark:text-zinc-200 hover:text-amber-500 transition-colors">{t('Services')}</a>
-              <a href="#gallery" className="text-zinc-800 dark:text-zinc-200 hover:text-amber-500 transition-colors">{t('Photos')}</a>
-              <a href="#reviews" className="text-zinc-800 dark:text-zinc-200 hover:text-amber-500 transition-colors">{t('Reviews')}</a>
-              <a href="#faq" className="text-zinc-800 dark:text-zinc-200 hover:text-amber-500 transition-colors">{t('FAQ')}</a>
-              <div className="flex items-center gap-3 border-s border-zinc-200 dark:border-zinc-800 ps-6">
+            <div className="hidden lg:flex gap-10 items-center font-semibold text-sm tracking-wider uppercase text-zinc-200">
+              <a href="#services" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('Services')}</a>
+              <a href="#gallery" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('Photos')}</a>
+              <a href="#reviews" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('Reviews')}</a>
+              <a href="#faq" className="text-zinc-300 hover:text-amber-400 transition-colors">{t('FAQ')}</a>
+              <div className="flex items-center gap-3 border-l border-zinc-700 pl-6">
                 <button
                   onClick={() => setIsDarkMode(!isDarkMode)}
-                  className="flex items-center justify-center bg-[#FFFEFC] dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 hover:border-amber-500 rounded-full w-10 h-10 transition-all text-zinc-800 dark:text-zinc-200 hover:shadow-lg hover:-translate-y-0.5"
+                  className="flex items-center justify-center bg-zinc-800 border border-zinc-700 hover:border-amber-500 rounded-full w-10 h-10 transition-all text-zinc-200 hover:shadow-lg hover:-translate-y-0.5"
                   title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                 >
                   {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
                 </button>
                 <button 
                   onClick={toggleLanguage}
-                  className="flex items-center justify-center bg-[#FFFEFC] dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 hover:border-amber-500 rounded-full w-10 h-10 transition-all hover:shadow-lg hover:-translate-y-0.5"
+                  className="flex items-center justify-center bg-zinc-800 border border-zinc-700 hover:border-amber-500 rounded-full w-10 h-10 transition-all hover:shadow-lg hover:-translate-y-0.5"
                   title={i18n.language === 'ar' ? 'Switch to English' : 'التبديل للعربية'}
                 >
                   <img 
@@ -294,14 +293,14 @@ function App() {
             <div className="flex lg:hidden items-center gap-3">
               <button
                 onClick={() => setIsDarkMode(!isDarkMode)}
-                className="flex items-center justify-center bg-[#FFFEFC] dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 hover:border-amber-500 rounded-full w-9 h-9 transition-all text-zinc-800 dark:text-zinc-200"
+                className="flex items-center justify-center bg-zinc-800 border border-zinc-700 hover:border-amber-500 rounded-full w-9 h-9 transition-all text-zinc-200"
                 title={isDarkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
               >
                 {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
               </button>
               <button 
                 onClick={toggleLanguage}
-                className="flex items-center justify-center bg-[#FFFEFC] dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 hover:border-amber-500 rounded-full w-9 h-9 transition-all"
+                className="flex items-center justify-center bg-zinc-800 border border-zinc-700 hover:border-amber-500 rounded-full w-9 h-9 transition-all"
                 title={i18n.language === 'ar' ? 'Switch to English' : 'التبديل للعربية'}
               >
                 <img 
@@ -314,7 +313,7 @@ function App() {
               </button>
               <button 
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="p-2 -mr-2 text-zinc-800 dark:text-zinc-200"
+                className="p-2 -mr-2 text-zinc-200"
               >
                 {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -329,13 +328,13 @@ function App() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden overflow-hidden border-t border-zinc-200 dark:border-zinc-800 bg-[#FCFBF7] dark:bg-zinc-950"
+              className="lg:hidden overflow-hidden border-t border-zinc-800 bg-zinc-950"
             >
               <div className="flex flex-col py-4 px-4 gap-4 font-semibold text-sm tracking-wider uppercase">
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#services" className="text-zinc-800 dark:text-zinc-200 py-2 hover:text-amber-500">{t('Services')}</a>
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#gallery" className="text-zinc-800 dark:text-zinc-200 py-2 hover:text-amber-500">{t('Photos')}</a>
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#reviews" className="text-zinc-800 dark:text-zinc-200 py-2 hover:text-amber-500">{t('Reviews')}</a>
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#faq" className="text-zinc-800 dark:text-zinc-200 py-2 hover:text-amber-500">{t('FAQ')}</a>
+                <a onClick={() => setIsMobileMenuOpen(false)} href="#services" className="text-zinc-300 py-2 hover:text-amber-400">{t('Services')}</a>
+                <a onClick={() => setIsMobileMenuOpen(false)} href="#gallery" className="text-zinc-300 py-2 hover:text-amber-400">{t('Photos')}</a>
+                <a onClick={() => setIsMobileMenuOpen(false)} href="#reviews" className="text-zinc-300 py-2 hover:text-amber-400">{t('Reviews')}</a>
+                <a onClick={() => setIsMobileMenuOpen(false)} href="#faq" className="text-zinc-300 py-2 hover:text-amber-400">{t('FAQ')}</a>
               </div>
             </motion.div>
           )}
