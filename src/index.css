@@ -1,78 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
-@import "tailwindcss";
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-arabic: "Cairo", system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-}
-@custom-variant dark (&:where(.dark, .dark *));
+/* ── PASTE THIS AT THE VERY BOTTOM of src/index.css ── */
+/* (delete any old scissors-fall or whatsapp-radar rules first) */
 
-html {
-  scroll-behavior: smooth;
+/* ── WhatsApp hero button: solid green box with edge glow ── */
+.whatsapp-glow-btn {
+  background-color: #25D366;
+  box-shadow:
+    0 0 0 0 rgba(37,211,102,0.7),
+    0 4px 24px rgba(37,211,102,0.35);
+  animation: wa-glow-border 2.2s ease-in-out infinite;
 }
-
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.whatsapp-glow-btn:hover {
+  background-color: #1EBE57;
 }
-
-/* direction classes */
-.dir-rtl {
-  direction: rtl;
-  font-family: var(--font-arabic);
+@keyframes wa-glow-border {
+  0%,100% { box-shadow: 0 0  8px 2px rgba(37,211,102,0.5), 0 4px 24px rgba(37,211,102,0.3); }
+  50%      { box-shadow: 0 0 22px 6px rgba(37,211,102,0.9), 0 4px 32px rgba(37,211,102,0.5); }
 }
 
-.dir-ltr {
-  direction: ltr;
-  font-family: var(--font-sans);
-}
-
-.floating-whatsapp {
-  animation: pulse-whatsapp 2s infinite;
-}
-
-@keyframes pulse-whatsapp {
-  0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-  }
-  70% {
-    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-div#root:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) {
-  font-family: Verdana;
-  text-align: center;
-  font-weight: bold;
-}
-
-div#root:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(2) {
-  font-family: Verdana;
-  font-weight: bold;
-  text-align: center;
-  line-height: 19px;
-  font-size: 0px;
-}
-
-div#root:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1) {
-  background-color: #915e00;
-}
-
-/* ── ADD THESE TO THE BOTTOM OF src/index.css ── */
-
-/* WhatsApp radar glow — replaces old pulse-whatsapp */
+/* ── WhatsApp floating circle button: radar glow ── */
 .whatsapp-radar {
   position: relative;
 }
@@ -82,33 +27,7 @@ div#root:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > div:nth-of-t
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: rgba(37, 211, 102, 0.5);
-  animation: radar-ring 2.4s ease-out infinite;
-  pointer-events: none;
-}
-.whatsapp-radar::after {
-  animation-delay: 1.2s;
-}
-@keyframes radar-ring {
-  0%   { transform: scale(1);   opacity: 0.7; }
-  100% { transform: scale(2.4); opacity: 0;   }
-}
-
-/* ── REPLACE the scissors section at the bottom of src/index.css ── */
-/* DELETE the old scissors-fall and scissors-fall-delay rules,      */
-/* then PASTE everything below                                       */
-
-/* WhatsApp radar glow */
-.whatsapp-radar {
-  position: relative;
-}
-.whatsapp-radar::before,
-.whatsapp-radar::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: rgba(37, 211, 102, 0.5);
+  background: rgba(37,211,102,0.5);
   animation: radar-ring 2.4s ease-out infinite;
   pointer-events: none;
 }
@@ -118,43 +37,23 @@ div#root:nth-of-type(1) > div:nth-of-type(1) > nav:nth-of-type(1) > div:nth-of-t
   100% { transform: scale(2.4); opacity: 0;   }
 }
 
-/* ── Full-screen floating scissors for loading screen ── */
+/* ── Full-screen scissors loading animation ── */
 .scissors-float {
   position: absolute;
-  color: #f59e0b;          /* amber-500 */
+  color: #f59e0b;
   opacity: 0;
-  font-size: 2rem;
   will-change: transform, opacity;
   animation: sci-drift 2s ease-in-out infinite;
   user-select: none;
 }
-
-/* Each scissors starts at a different horizontal position
-   and drifts at a slightly different speed / size           */
-.scissors-float-1 {
-  left: 8%;  font-size: 2.2rem; opacity:.7;
-  animation-duration: 1.9s; animation-delay: 0s;
-}
-.scissors-float-2 {
-  left: 28%; font-size: 1.6rem; color:#fbbf24;
-  animation-duration: 2.3s; animation-delay: 0.4s;
-}
-.scissors-float-3 {
-  left: 50%; font-size: 2.6rem;
-  animation-duration: 2.0s; animation-delay: 0.8s;
-}
-.scissors-float-4 {
-  left: 70%; font-size: 1.4rem; color:#fbbf24;
-  animation-duration: 2.5s; animation-delay: 0.2s;
-}
-.scissors-float-5 {
-  left: 88%; font-size: 2rem;
-  animation-duration: 1.8s; animation-delay: 1.0s;
-}
-
+.scissors-float-1 { left:8%;  font-size:2.2rem; animation-duration:1.9s; animation-delay:0s;   }
+.scissors-float-2 { left:28%; font-size:1.6rem; color:#fbbf24; animation-duration:2.3s; animation-delay:0.4s; }
+.scissors-float-3 { left:50%; font-size:2.6rem; animation-duration:2.0s; animation-delay:0.8s; }
+.scissors-float-4 { left:70%; font-size:1.4rem; color:#fbbf24; animation-duration:2.5s; animation-delay:0.2s; }
+.scissors-float-5 { left:88%; font-size:2rem;   animation-duration:1.8s; animation-delay:1.0s; }
 @keyframes sci-drift {
-  0%   { transform: translateY(-60px) rotate(-10deg); opacity: 0;   }
+  0%   { transform: translateY(-60px) rotate(-10deg); opacity: 0;    }
   12%  { opacity: 0.55; }
   88%  { opacity: 0.55; }
-  100% { transform: translateY(110vh)  rotate(15deg);  opacity: 0;   }
+  100% { transform: translateY(110vh) rotate(15deg);  opacity: 0;    }
 }
