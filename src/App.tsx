@@ -54,7 +54,7 @@ function GallerySection() {
   const images = [1, 2, 3, 4, 5, 6, 7].map(num => `/gallery/${num}.jpg`);
 
   return (
-    <section id="gallery" className="py-24 bg-[#FFFEFC] dark:bg-zinc-900 border-y border-zinc-200 dark:border-zinc-800">
+    <section id="gallery" className="py-24 bg-zinc-900 border-y border-zinc-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -62,7 +62,7 @@ function GallerySection() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">{t('Photos')}</h2>
+          <h2 className="text-3xl font-bold text-white mb-4">{t('Photos')}</h2>
           <div className="w-24 h-1 bg-amber-500 mx-auto rounded-full" />
         </motion.div>
       </div>
@@ -115,25 +115,14 @@ function GallerySection() {
                 alt={`Gallery photo ${idx + 1}`} 
                 className="w-full h-full object-cover transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#FCFBF7] dark:from-zinc-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
             </motion.div>
           ))}
         </div>
         
-        <div className="flex justify-center gap-4 mt-2 md:hidden">
-          <button 
-            onClick={() => scrollRef.current?.scrollBy({ left: -280, behavior: 'smooth' })}
-            className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-amber-500 hover:text-white transition-colors border border-zinc-300 dark:border-zinc-700"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button 
-            onClick={() => scrollRef.current?.scrollBy({ left: 280, behavior: 'smooth' })}
-            className="p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-white hover:bg-amber-500 hover:text-white transition-colors border border-zinc-300 dark:border-zinc-700"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+        <p className="text-center text-zinc-600 text-xs mt-3 md:hidden tracking-widest">
+          ← {i18n.language === 'ar' ? 'اسحب للتصفح' : 'swipe to browse'} →
+        </p>
       </div>
 
       <AnimatePresence>
@@ -142,11 +131,11 @@ function GallerySection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-[#FCFBF7]/90 dark:bg-zinc-950/95 backdrop-blur-sm p-4 md:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-zinc-950/95 backdrop-blur-sm p-4 md:p-8"
             onClick={() => setSelectedImage(null)}
           >
             <button 
-              className="absolute top-6 right-6 p-3 bg-[#FFFEFC] dark:bg-zinc-900 rounded-full hover:bg-zinc-100 dark:bg-zinc-800 transition-colors text-zinc-900 dark:text-white z-10 border border-zinc-200 dark:border-zinc-800"
+              className="absolute top-6 right-6 p-3 bg-zinc-900 rounded-full hover:bg-zinc-800 transition-colors text-white z-10 border border-zinc-700"
               onClick={() => setSelectedImage(null)}
             >
               <X className="w-6 h-6" />
@@ -252,7 +241,7 @@ function App() {
       <div className={`min-h-screen font-sans bg-zinc-950 text-white ${isRTL ? 'dir-rtl' : 'dir-ltr'}`} dir={isRTL ? 'rtl' : 'ltr'}>
       <nav className="fixed top-0 w-full z-50 bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/60 shadow-sm transition-all duration-300">
         <div className="w-full px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20 md:h-24">
+          <div className="flex justify-between items-center h-14 md:h-16">
             <div className="flex items-center gap-2 group cursor-pointer flex-shrink-0">
               <img
                 src="/gallery/barbershoplogo.png"
@@ -332,20 +321,32 @@ function App() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden overflow-hidden border-t border-zinc-800 bg-zinc-950"
+              className="lg:hidden overflow-hidden border-t border-zinc-800 bg-zinc-950/98"
             >
-              <div className="flex flex-col py-4 px-4 gap-4 font-semibold text-sm tracking-wider uppercase">
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#services" className="text-zinc-300 py-2 hover:text-amber-400">{t('Services')}</a>
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#gallery" className="text-zinc-300 py-2 hover:text-amber-400">{t('Photos')}</a>
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#reviews" className="text-zinc-300 py-2 hover:text-amber-400">{t('Reviews')}</a>
-                <a onClick={() => setIsMobileMenuOpen(false)} href="#faq" className="text-zinc-300 py-2 hover:text-amber-400">{t('FAQ')}</a>
+              <div className="flex flex-col font-semibold text-sm tracking-wider uppercase">
+                {[
+                  { href: '#services', label: t('Services') },
+                  { href: '#gallery', label: t('Photos') },
+                  { href: '#reviews', label: t('Reviews') },
+                  { href: '#faq', label: t('FAQ') },
+                ].map((item, i) => (
+                  <a
+                    key={i}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    href={item.href}
+                    className="flex items-center justify-between px-5 py-3.5 text-zinc-300 hover:text-amber-400 hover:bg-zinc-800/50 transition-colors border-b border-zinc-800/60 last:border-b-0"
+                  >
+                    <span>{item.label}</span>
+                    <span className="text-amber-500 text-xs">›</span>
+                  </a>
+                ))}
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </nav>
 
-      <main className="pt-20">
+      <main className="pt-14 md:pt-16">
         <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950">
           <div className="absolute inset-0 z-0">
             <img 
